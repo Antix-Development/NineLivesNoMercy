@@ -53,11 +53,11 @@ let AIRSTRIKE_CONTROL           = 5;
 let resetOptions = () => {
   OPTIONS = {
     s: [ // Highscores.
+      newScore(8e6),
+      newScore(4e5),
+      newScore(2e5),
       newScore(1e5),
-      newScore(7e4),
-      newScore(4e4),
-      newScore(2e4),
-      newScore(1e4),
+      newScore(5e4),
     ],
     a: 1, // Audio enabled.
     c: [ // Controls.
