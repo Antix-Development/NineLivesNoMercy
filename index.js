@@ -1161,18 +1161,17 @@ let optionsMenu = [
 
 let returnToMainMenu = e => {
 
+  trainingMode = 0;
+
+  gameMenu[9]._visible = 0;
 
   generateTerrain(1);
 
   activeMenu = mainMenu;
   programState = STATE_MAINMENU;
 
-  log(`mouseLocked:${mouseLocked}`);
-
   if (mouseLocked) D.exitPointerLock();
 
-  trainingMode = 0;
-  gameMenu[9]._visible = 0;
 
 };
 
@@ -2309,7 +2308,7 @@ let terrainGenerated = e => {
     log(`${enemyTypeStrings[i]} range:${_attackRange.toFixed(2)} rof:${_rateOfFire.toFixed(2)} proj:${_projSpeed.toFixed(2)} move:${_moveSpeed.toFixed(2)} turn:${_turnSpeed.toFixed(2)} `);
     bigString += `${enemyTypeStrings[i]} range:${_attackRange.toFixed(2)} rof:${_rateOfFire.toFixed(2)} proj:${_projSpeed.toFixed(2)} move:${_moveSpeed.toFixed(2)} turn:${_turnSpeed.toFixed(2)}\n`;
   }
-  //endclips
+  //endclip
 
 
   playerCamera = newCamera(MAP_CENTER, FLIGHT_HEIGHT, MAP_CENTER, 0, 0);
@@ -3784,7 +3783,7 @@ mainGameLoop = time => {
       };
 
       // if (distanceToPlayer < (VIEW_CULL_RANGE * VIEW_CULL_RANGE)) { // The enemy is visible to the player.
-      if (distanceToPlayer < 2304) { // The enemy is visible to the player.
+      if (distanceToPlayer < 1152) { // The enemy is visible to the player.
         
         if (type !== TYPE_SHIELD) { // Shields are processed further on.
 
@@ -5198,7 +5197,6 @@ onload = e => {
  * @param {number} maxLevel - The number of levels to simulate.
  */
 function runSpawnSimulation(maxLevel = 40) {
-  console.log("--- Starting Enemy Spawn Simulation ---");
 
   // Loop from Level 1 up to the maxLevel.
   for (let level = 0; level < maxLevel; level++) {
@@ -5245,9 +5243,7 @@ function runSpawnSimulation(maxLevel = 40) {
 
     // --- OUTPUT ---
     // Using `level + 1` to make the log more human-readable (Level 1, not Level 0).
-    console.log(
-      `Level ${level + 1}: Turi: ${turiCount}, Bota: ${botaCount}, Dart: ${dartCount}, Tria: ${triaCount}, Prowler: ${prowlerCount}`
-    );
+    log(`Level ${level + 1}: Turi: ${turiCount}, Bota: ${botaCount}, Dart: ${dartCount}, Tria: ${triaCount}, Prowler: ${prowlerCount}`);
   }
 }
 
