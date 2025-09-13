@@ -1009,6 +1009,15 @@ let getMousePosition = e => {
   ];
 };
 
+// let currentScale = 1;
+// let getMousePosition = e => {
+//   let rect = C.getBoundingClientRect();
+//   return [
+//     (e.clientX - rect.left) / currentScale,
+//     (e.clientY - rect.top) / currentScale,
+//   ];
+// };
+
 // Mouse click event handler.
 onclick = e => {
 
@@ -4943,6 +4952,17 @@ onload = e => {
     C.style.transform = 'scale(' + min(innerWidth / WIDTH, innerHeight / HEIGHT) + ')'; // Scale.
     C.style.left = ((innerWidth - C.getBoundingClientRect().width) / 2 | 0) + 'px'; // Center.
   }
+
+  // onresize = e => {
+  //   // Calculate scale to fit the canvas while maintaining aspect ratio
+  //   let scaleX = innerWidth / WIDTH;
+  //   let scaleY = innerHeight / HEIGHT;
+  //   currentScale = min(scaleX, scaleY);
+  //   C.style.transform = `scale(${currentScale})`;
+
+  //   // C.style.transform = `scale(${Math.min(innerWidth / WIDTH, innerHeight / HEIGHT)})`;
+  // }
+
   onresize();
 
   (!(OPTIONS = localStorage.getItem(NAMESPACE))) ? resetOptions() : OPTIONS = JSON.parse(OPTIONS); // Load optisons , creating new options if not found.
